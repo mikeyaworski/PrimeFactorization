@@ -1,25 +1,29 @@
-// reduces the parameter n into a product of only prime numbers
-// and returns a list of those prime number factors
+/**
+ * Reduces the integer n into a product of prime factors
+ * and returns a mapping from the prime factor to its multiplicity.
+ * Example: 40 = 2^3 * 5 would return { 2: 3, 5: 1 }
+ */
 function primeFactorize(n) {
-    var primeFactors = [];
-    
-    var primeFactor = 0;
-        
-    for (var i = 2; i <= n / i; ) {
-        if (n % i == 0) {
-            primeFactor = i;
-            primeFactors.push(primeFactor);
-            n /= i;
-        } else {
-            i++;
-        }
-    }
-    
-    if (primeFactor < n) {
-        primeFactors.push(n);
+  const primeFactors = {};
+  let primeFactor = 0;
+
+  function pushPrimeFactor() {
+    primeFactors[primeFactor] = (primeFactors[primeFactor] || 0) + 1;
+  }
+
+  let i = 2;
+  while (i <= n / i) {
+    if (n % i === 0) {
+      primeFactor = i;
+      pushPrimeFactor();
+      n /= i;
     } else {
-        primeFactors.push(primeFactor);
+      i++;
     }
-        
-    return primeFactors;
+  }
+
+  if (primeFactor < n) primeFactor = n;
+  pushPrimeFactor();
+
+  return primeFactors;
 }
