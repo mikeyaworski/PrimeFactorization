@@ -59,5 +59,5 @@ console.log(primeFactorize(40)); // { 2: 3, 5: 1 }
 
 ### Python
 ```python
-print (primeFactorize(40)) # { 2: 3, 5: 1 }
+print(primeFactorize(40)) # { 2: 3, 5: 1 }
 ```
